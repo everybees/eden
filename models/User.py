@@ -1,4 +1,5 @@
 # this will contain the User class
 
 class User():
-    pass
+    def __init__(self):
+        pass
