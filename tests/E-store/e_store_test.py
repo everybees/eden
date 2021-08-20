@@ -1,6 +1,8 @@
 import unittest
 
 from models.Users.Customer import Customer
+from models.Users.Exceptions import IncompleteDetails, InvalidCustomer
+from models.Users.Platfom import Platform
 from models.Users.Users import User
 
 
@@ -11,6 +13,7 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.user = User()
         self.customer = Customer("Titobi", "Ligali", "1234", "titobiloluwaligali2005@gmail.com", "09012958377")
+        self.platform = Platform()
 
     def tearDown(self):
         self.user = None
@@ -32,10 +35,40 @@ class MyTestCase(unittest.TestCase):
 
     def test_that_customer_email(self):
         self.customer.set_email("titobiloluwaligali2005@gmail.com")
-        self.assertEqual("titobiloluwaligali2005@gmail.com",self.customer.get_email())
+        self.assertEqual("titobiloluwaligali2005@gmail.com", self.customer.get_email())
+
+    def test_that_customer_has_password(self):
+        self.customer.set_password("1234")
+        self.assertEqual("1234", self.customer.get_password())
+
+    def test_that_customer_has_phone_number(self):
+        self.customer.set_phone_number("09012958377")
+        self.assertEqual("09012958377", self.customer.get_phone_number())
+
+    def test_that_customer_can_register(self):
+        self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
+        self.assertTrue(
+            self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377"))
+
+    def test_that_customer_cannot_register_without_details_being_complete(self):
+        self.assertRaises(IncompleteDetails,
+                          self.platform.register, "", "Ligali", "titobiloluwaligali2005@gmail.com", "1234",
+                          "09012958377")
+
+    def test_that_customer_can_login(self):
+        self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
+        self.assertTrue(self.platform.login("titobiloluwaligali2005@gmail.com", "1234"))
+
+    def test_that_customer_cannot_login_with_wrong_email(self):
+        self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
+        self.assertRaises(InvalidCustomer, self.platform.login, "@gmail.com", "1234")
+
+    def test_that_customer_cannot_login_with_wrong_password(self):
+        self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
+        self.assertRaises(InvalidCustomer, self.platform.login, "titobiloluwaligali2005@gmail.com", "12345")
 
 
-
-
+    def test_that_customer_can_add_to_cart(self):
+        self.platform.add_to_cart()
 if __name__ == '__main__':
     unittest.main()
