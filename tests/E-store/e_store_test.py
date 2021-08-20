@@ -1,7 +1,15 @@
 import unittest
 
 from models.Users.Customer import Customer
+<<<<<<< Updated upstream
 from models.Users.Exceptions import IncompleteDetails, InvalidCustomer
+=======
+from models.Users.Exceptions import IncompleteDetails
+from models.Users.Merchants import Merchant
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 from models.Users.Platfom import Platform
 from models.Users.Users import User
 
@@ -13,6 +21,7 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.user = User()
         self.customer = Customer("Titobi", "Ligali", "1234", "titobiloluwaligali2005@gmail.com", "09012958377")
+        self.merchant = Merchant("", "", "", "", "")
         self.platform = Platform()
 
     def tearDown(self):
@@ -55,6 +64,7 @@ class MyTestCase(unittest.TestCase):
                           self.platform.register, "", "Ligali", "titobiloluwaligali2005@gmail.com", "1234",
                           "09012958377")
 
+<<<<<<< Updated upstream
     def test_that_customer_can_login(self):
         self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertTrue(self.platform.login("titobiloluwaligali2005@gmail.com", "1234"))
@@ -67,8 +77,17 @@ class MyTestCase(unittest.TestCase):
         self.platform.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertRaises(InvalidCustomer, self.platform.login, "titobiloluwaligali2005@gmail.com", "12345")
 
+<<<<<<< Updated upstream
 
     def test_that_customer_can_add_to_cart(self):
         self.platform.add_to_cart()
+=======
+    def test_that_merchant_can_register(self):
+        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
+>>>>>>> Stashed changes
+=======
+    def test_that_merchant_can_register(self):
+        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
+>>>>>>> Stashed changes
 if __name__ == '__main__':
     unittest.main()
