@@ -40,7 +40,5 @@ class Customer(User):
     def get_phone_number(self):
         return self.phone_number
 
-    def create(self)
-        pass
 
 
