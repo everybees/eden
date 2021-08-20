@@ -1,3 +1,4 @@
+from models.Users.Exceptions import IncompleteDetails
 from models.Users.Users import User
 
 
@@ -30,7 +31,10 @@ class Merchant(User):
     def display_company_reference_number(self):
         return self.ompany_reference_number
 
-    def registered_merchants(self):
+    def register(self, company_name, email, password, reference_number):
+        if company_name =="" or email == "" or password =="" or reference_number =="":
+            raise IncompleteDetails("Incomplete registration details")
+
 
 
 
