@@ -1,19 +1,12 @@
 import unittest
 
 from models.Users.Customer import Customer
-<<<<<<< Updated upstream
-from models.Users.Exceptions import IncompleteDetails, InvalidCustomer
-<<<<<<< HEAD
-=======
-from models.Users.Exceptions import IncompleteDetails
 from models.Users.Merchants import Merchant
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-from models.Users.Platfom import Platform
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
+
+from models.Users.Exceptions import IncompleteDetails, InvalidCustomer, InvalidLoginDetails, UserExists, ProductExists
+
+from models.Users.Exceptions import IncompleteDetails
+
 from models.Users.Users import User
 
 
@@ -24,11 +17,7 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.user = User()
         self.customer = Customer("Titobi", "Ligali", "1234", "titobiloluwaligali2005@gmail.com", "09012958377")
-<<<<<<< HEAD
-        self.merchant = Merchant("", "", "", "", "")
-        self.platform = Platform()
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
+        self.merchant = Merchant("", "", "", "")
 
     def tearDown(self):
         self.user = None
@@ -69,7 +58,6 @@ class MyTestCase(unittest.TestCase):
                           self.customer.register, "", "Ligali", "titobiloluwaligali2005@gmail.com", "1234",
                           "09012958377")
 
-<<<<<<< Updated upstream
     def test_that_customer_can_login(self):
         self.customer.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertTrue(self.customer.login("titobiloluwaligali2005@gmail.com", "1234"))
@@ -85,24 +73,52 @@ class MyTestCase(unittest.TestCase):
     def test_for_registered_customers(self):
         self.customer.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertEqual(1, self.customer.get_number_of_registered_customer())
+
     #
     # def test_that_customer_can_add_to_cart(self):
     #     self.platform.add_to_cart()
 
-<<<<<<< Updated upstream
-
-<<<<<<< HEAD
     def test_that_customer_can_add_to_cart(self):
         self.platform.add_to_cart()
-=======
+
     def test_that_merchant_can_register(self):
-        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
->>>>>>> Stashed changes
-=======
-    def test_that_merchant_can_register(self):
-        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
->>>>>>> Stashed changes
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
+        self.merchant.register("oja", "ojasales@email.com", "sale121",  "+23481123456")
+        self.assertEqual(1, self.merchant.get_number_of_registered_merchants())
+
+    def test_that_merchant_cannot_register_with_incomplete_details(self):
+        self.assertRaises(IncompleteDetails,
+                          self.merchant.register, "", "sale121", "ojasales@email.com", "+23481123456")
+
+    def test_that_merchant_can_login(self):
+        # self.merchant.register("oja", "ojasales@email.com", "sale121", "+23481123456")
+        self.assertTrue(self.merchant.merchant_login("oja", "sale121"))
+
+    def test_that_merchant_cannot_login_with_incorrect_details(self):
+        self.assertRaises(InvalidLoginDetails,   self.merchant.merchant_login("oja", "sa"))
+
+    def test_that_merchants_have_unique_company_name(self):
+        with self.assertRaises(UserExists):
+            self.merchant.register("oja", "ojasales@email.com", "sale121", "+23481123456")
+
+    def test_that_merchants_have_unique_email(self):
+        with self.assertRaises(UserExists):
+            self.merchant.register("oja", "ojasales@email.com", "sale121", "+23481123456")
+
+    def test_that_merchants_have_unique_reference_numbers(self):
+        with self.assertRaises(UserExists):
+            self.merchant.register("oja", "ojasales@email.com", "sale121", "+23481123456")
+
+    def test_merchant_can_add_product(self):
+        self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
+        self.assertEquals(1, self.merchant.get_number_of_products())
+
+    def test_that_merchant_can_display_product(self):
+        self.merchant.display_product()
+
+    def test_that_each_product_is_unique(self):
+        self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
+        with self.assertRaises(ProductExists):
+            self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
+
 if __name__ == '__main__':
     unittest.main()
