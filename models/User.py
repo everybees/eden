@@ -29,6 +29,8 @@ class User:
         if old_password == self.__password:
             self.__password = new_password
 
+    # how to go
+
     def get_password(self):
         return self.__password
 
@@ -37,6 +39,3 @@ class User:
 
     def get_phone_number(self):
         return self.__phone_number
-
-
-
