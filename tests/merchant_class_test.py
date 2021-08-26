@@ -12,7 +12,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("welcomed back", first_merchant.log_in("kola","kola1989")) #test will fail
 
 
-
-
 if __name__ == '__main__':
     unittest.main()
