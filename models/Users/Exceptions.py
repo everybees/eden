@@ -6,3 +6,4 @@ class IncompleteDetails(Exception):
 class InvalidCustomer(Exception):
     def __init__(self, message):
         super(InvalidCustomer, self).__init__(message)
+
