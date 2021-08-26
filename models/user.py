@@ -1,6 +1,8 @@
 import abc
+from typing import List
 
 from models.address import Address
+from models.billing_info import Billing_Info
 
 
 class User(abc.ABC):
@@ -47,5 +49,3 @@ class User(abc.ABC):
 
     def update__password(self, new_password: str):
         self.__password = new_password
-
-
