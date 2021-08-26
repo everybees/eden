@@ -1,19 +1,7 @@
 import unittest
 
 from models.Users.Customer import Customer
-<<<<<<< Updated upstream
 from models.Users.Exceptions import IncompleteDetails, InvalidCustomer
-<<<<<<< HEAD
-=======
-from models.Users.Exceptions import IncompleteDetails
-from models.Users.Merchants import Merchant
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-from models.Users.Platfom import Platform
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
 from models.Users.Users import User
 
 
@@ -24,11 +12,6 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.user = User()
         self.customer = Customer("Titobi", "Ligali", "1234", "titobiloluwaligali2005@gmail.com", "09012958377")
-<<<<<<< HEAD
-        self.merchant = Merchant("", "", "", "", "")
-        self.platform = Platform()
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
 
     def tearDown(self):
         self.user = None
@@ -69,7 +52,6 @@ class MyTestCase(unittest.TestCase):
                           self.customer.register, "", "Ligali", "titobiloluwaligali2005@gmail.com", "1234",
                           "09012958377")
 
-<<<<<<< Updated upstream
     def test_that_customer_can_login(self):
         self.customer.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertTrue(self.customer.login("titobiloluwaligali2005@gmail.com", "1234"))
@@ -89,20 +71,15 @@ class MyTestCase(unittest.TestCase):
     # def test_that_customer_can_add_to_cart(self):
     #     self.platform.add_to_cart()
 
-<<<<<<< Updated upstream
-
-<<<<<<< HEAD
     def test_that_customer_can_add_to_cart(self):
         self.platform.add_to_cart()
-=======
+
     def test_that_merchant_can_register(self):
         self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
->>>>>>> Stashed changes
-=======
+
     def test_that_merchant_can_register(self):
         self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
->>>>>>> Stashed changes
-=======
->>>>>>> 68fea1bc1e1f0820aaa6344d7438a8870d138ebf
+
+
 if __name__ == '__main__':
     unittest.main()

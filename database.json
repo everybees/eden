@@ -1,34 +1,5 @@
 {
     "customers": [
-        {
-            "name": "titobiloluwa Ligali",
-            "email": "titobiloluwaligali2005@gmail.com",
-            "password": "1234",
-            "phone_number": "09012958377"
-        },
-        {
-            "name": "titobiloluwa Ligali",
-            "email": "titobiloluwaligali2005@gmail.com",
-            "password": "1234",
-            "phone_number": "09012958377"
-        },
-        {
-            "name": "titobiloluwa Ligali",
-            "email": "titobiloluwaligali2005@gmail.com",
-            "password": "1234",
-            "phone_number": "09012958377"
-        },
-        {
-            "name": "titobiloluwa Ligali",
-            "email": "titobiloluwaligali2005@gmail.com",
-            "password": "1234",
-            "phone_number": "09012958377"
-        },
-        {
-            "name": "titobiloluwa Ligali",
-            "email": "titobiloluwaligali2005@gmail.com",
-            "password": "1234",
-            "phone_number": "09012958377"
-        }
+
     ]
 }
