@@ -16,3 +16,8 @@ class InvalidAddressException(Exception):
 class InvalidCardException(Exception):
     def __init__(self):
         super().__init__("Please provide correct card details")
+
+
+class CategoryNotFoundException(Exception):
+    def __init__(self):
+        super().__init__("This category is currently not available")
