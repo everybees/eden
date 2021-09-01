@@ -3,7 +3,6 @@ from unittest import TestCase
 
 from models.address import Address
 from models.billing_info import Billing_Info
-from models.card import Card
 from models.credit_card_info import Credit_Card_Info
 
 
@@ -11,7 +10,7 @@ class Test(TestCase):
     def test_create_billing_info(self):
         address: Address = Address(house_number=312, street_name="Hebert Macaulay Way",
                                    city_name="Yaba", state_name="Lagos", country_name="Nigeria")
-        credit_card_info: Credit_Card_Info = Credit_Card_Info(card_type=Card.MASTER_CARD,
+        credit_card_info: Credit_Card_Info = Credit_Card_Info(card_type="master card",
                                                               name_on_card="Ehis Edemakhiota", cvv=567,
                                                               expr_year_month=datetime.now(),
                                                               credit_card_number="2345648746476")

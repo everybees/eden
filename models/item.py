@@ -2,14 +2,14 @@ from models.product import Product
 
 
 class Item:
-    def __int__(self, quantity: int, product: Product):
+    def __init__(self, quantity: int, product: Product):
         self.__quantity = quantity
-        self.__product = product
+        self.__product_id = product.get__id
 
     @property
-    def get__quantity(self):
+    def get__quantity(self) -> int:
         return self.__quantity
 
     @property
-    def get__product(self):
-        return self.__product
+    def get__product_id(self) -> str:
+        return self.__product_id

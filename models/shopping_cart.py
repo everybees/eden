@@ -4,7 +4,7 @@ from models.item import Item
 
 
 class Shopping_Cart:
-    def __int__(self):
+    def __init__(self):
         self.__list_of_items: List[Item] = list()
 
     @property
@@ -13,3 +13,6 @@ class Shopping_Cart:
 
     def add_items_to_shopping_cart(self, *items):
         self.__list_of_items.extend(items)
+
+    def add(self, item):
+        self.__list_of_items.append(item)

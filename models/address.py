@@ -1,6 +1,6 @@
 class Address:
-    def __init__(self, house_number: int, street_name: str, city_name: str, state_name: str,
-                 country_name: str):
+    def __init__(self, house_number: int = 0, street_name: str = "", city_name: str = "", state_name: str = "",
+                 country_name: str = "", ):
         self.__house_number: int = house_number
         self.__street_name: str = street_name
         self.__city_name: str = city_name
@@ -41,4 +41,3 @@ class Address:
 
     def update__country_name(self, new_country_name):
         self.__country_name = new_country_name
-

@@ -1,22 +1,17 @@
 class Registration_Dto:
-    def __init__(self, first_name: str, last_name: str, email: str, username: str, password: str):
-        self.__first_name = first_name
-        self.__last_name = last_name
+    def __init__(self, firstname: str, lastname: str, email: str, password: str):
+        self.__firstname = firstname
+        self.__lastname = lastname
         self.__email = email
-        self.__username = username
         self.__password = password
 
     @property
-    def get__first_name(self):
-        return self.__first_name
+    def get__firstname(self):
+        return self.__firstname
 
     @property
-    def get__last_name(self):
-        return self.__last_name
-
-    @property
-    def get__user_name(self):
-        return self.__user_name
+    def get__lastname(self):
+        return self.__lastname
 
     @property
     def get__email(self):
