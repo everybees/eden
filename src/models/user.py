@@ -8,6 +8,8 @@ class User(abc.ABC):
         self.__email = email
         self.__user_name = user_name
         self.__password = password
+        self.__phone = ""
+        self.__home_address = None
 
     @property
     def get__first_name(self):
@@ -44,5 +46,16 @@ class User(abc.ABC):
     def set__email(self, email):
         self.__email = email
 
+    @property
+    def get__phone(self):
+        return self.__phone
 
+    def set__phone(self, phone):
+        self.__phone = phone
 
+    @property
+    def get__home_address(self):
+        return self.__home_address
+
+    def set__home_address(self, address):
+        self.__home_address = address
