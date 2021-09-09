@@ -72,12 +72,8 @@ class MyTestCase(unittest.TestCase):
         self.customer.register("titobiloluwa", "Ligali", "titobiloluwaligali2005@gmail.com", "1234", "09012958377")
         self.assertEqual(1, self.customer.get_number_of_registered_customer())
 
-    #
-    # def test_that_customer_can_add_to_cart(self):
-    #     self.platform.add_to_cart()
-
     def test_that_customer_can_add_to_cart(self):
-        self.platform.add_to_cart()
+        self.customer.add_to_cart()
 
     def test_that_merchant_can_register(self):
         self.merchant.register("oja", "ojasales@email.com", "sale121",  "+23481123456")
