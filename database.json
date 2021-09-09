@@ -30,5 +30,21 @@
             "password": "1234",
             "phone_number": "09012958377"
         }
+    ],
+    "merchants": [
+        {
+            "company_name": "oja",
+            "email": "ojasales@email.com",
+            "password": "sale121",
+            "reference_number": "+23481123456"
+        }
+    ],
+    "products": [
+        {
+            "name": "milo",
+            "price": 20.0,
+            "description": "hot chocolate",
+            "quantity_available": 100
+        }
     ]
 }
