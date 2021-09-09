@@ -5,8 +5,6 @@ from models.Users.Merchants import Merchant
 
 from models.Users.Exceptions import IncompleteDetails, InvalidCustomer, InvalidLoginDetails, UserExists, ProductExists
 
-from models.Users.Exceptions import IncompleteDetails
-
 from models.Users.Users import User
 
 
@@ -119,6 +117,13 @@ class MyTestCase(unittest.TestCase):
         self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
         with self.assertRaises(ProductExists):
             self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
+
+    def test_that_merchant_can_register(self):
+        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
+
+    def test_that_merchant_can_register(self):
+        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
+
 
 if __name__ == '__main__':
     unittest.main()

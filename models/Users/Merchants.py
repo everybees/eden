@@ -21,6 +21,7 @@ class Merchant(User):
         self.number_of_products = 0
         self.product_exists = True
 
+
     def set_merchant_password(self, password):
         self.password = password
 
@@ -67,7 +68,7 @@ class Merchant(User):
         for merchant in merchants:
             if company_name == merchant['company_name'] and password == merchant['password']:
                 return self.is_logIn
-        raise InvalidLoginDetails("Inc orrect login detail try again")
+        raise InvalidLoginDetails("In correct login detail try again")
 
     def check_if_user_exists(self, company_name, email, reference_number):
         merchants = self.database_file_loaded['merchants']
@@ -107,4 +108,4 @@ class Merchant(User):
         for product in products:
             if product_name.casefold() == product['name'] and product_description.casefold() == product['description']:
                 return self.product_exists
-        return False
+
