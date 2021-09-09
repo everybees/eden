@@ -1,8 +1,5 @@
-from models.product import Product
-
-
 class Item:
-    def __int__(self, quantity: int, product: Product):
+    def __init__(self, quantity, product):
         self.__quantity = quantity
         self.__product = product
 
@@ -13,3 +10,6 @@ class Item:
     @property
     def get__product(self):
         return self.__product
+
+    def update_product_quantity(self):
+        self.__quantity += 1
