@@ -1,7 +1,8 @@
 import json
 import datetime
 
-from models.Users.Exceptions import IncompleteDetails, InvalidCustomer
+from models.Users.Exceptions import IncompleteDetails, InvalidCustomer, ProductExistException
+from models.Users.Item import Item
 from models.Users.Users import User
 
 
@@ -83,3 +84,19 @@ class Customer(User):
                 raise InvalidCustomer("Please check that your email and  password is correct")
         return self.isLogin
 
+    def add_to_cart(self, item: Item):
+        items = self.database_file_loaded['products']
+        for pr in items:
+            if item.get_product_name == pr['products']['name']:
+                raise ProductExistException("Make sure product is a valid product")
+        customer_cart = {
+            "name": item.get_product_name(),
+            "price": item.get_product_price(),
+            "description": item.get_product_description()
+        }
+        self.database_file_loaded['cart'].append(customer_cart)
+        self.database_file.seek(0)
+        json.dump(self.database_file_loaded, self.database_file, indent=4)
+
+    def get_number_of_carts(self):
+        return self.database_file_loaded['cart'].keys().length()
