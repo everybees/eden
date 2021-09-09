@@ -3,10 +3,12 @@ from src.models.user import User
 
 
 class Customer(User):
-    def __init__(self, first_name, last_name, email, user_name, password):
-        super().__init__(first_name, last_name, email, user_name, password)
-        self.__cart = Cart()
-        self.__list_of_billing_info = []
+    def __init__(self, first_name, last_name, email, password, phone="", cart=Cart(), home_address=None,
+                 list_of_billing_info=None):
+        super().__init__(first_name=first_name, last_name=last_name, email=email, password=password
+                         , phone=phone, address=home_address)
+        self.__cart = cart
+        self.__list_of_billing_info = list_of_billing_info
 
     def add_to_cart(self, item):
         self.__cart.add_item_to_cart(item=item)
