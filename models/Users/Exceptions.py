@@ -22,3 +22,7 @@ class ProductExists(Exception):
     def __init__(self, message):
         super(ProductExists, self).__init__(message)
 
+
+class ProductExistException(Exception):
+    def __init__(self, message):
+        super(ProductExistException, self).__init__(message)
