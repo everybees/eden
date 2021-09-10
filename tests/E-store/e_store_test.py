@@ -1,6 +1,7 @@
 import unittest
 
 from models.Users.Customer import Customer
+from models.Users.Item import Item
 from models.Users.Merchants import Merchant
 
 from models.Users.Exceptions import IncompleteDetails, InvalidCustomer, InvalidLoginDetails, UserExists, ProductExists
@@ -73,10 +74,13 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(1, self.customer.get_number_of_registered_customer())
 
     def test_that_customer_can_add_to_cart(self):
-        self.customer.add_to_cart()
+        self.merchant.add_product("omo", 20.0, "soap", 45)
+        item = Item("omo", 20.0, "soap")
+        self.customer.add_to_cart(item)
+        self.assertEqual(1, self.customer.get_number_of_carts())
 
     def test_that_merchant_can_register(self):
-        self.merchant.register("oja", "ojasales@email.com", "sale121",  "+23481123456")
+        self.merchant.register("oja", "ojasales@email.com", "sale121", "+23481123456")
         self.assertEqual(1, self.merchant.get_number_of_registered_merchants())
 
     def test_that_merchant_cannot_register_with_incomplete_details(self):
@@ -88,7 +92,7 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(self.merchant.merchant_login("oja", "sale121"))
 
     def test_that_merchant_cannot_login_with_incorrect_details(self):
-        self.assertRaises(InvalidLoginDetails,   self.merchant.merchant_login("oja", "sa"))
+        self.assertRaises(InvalidLoginDetails, self.merchant.merchant_login("oja", "sa"))
 
     def test_that_merchants_have_unique_company_name(self):
         with self.assertRaises(UserExists):
@@ -113,12 +117,6 @@ class MyTestCase(unittest.TestCase):
         self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
         with self.assertRaises(ProductExists):
             self.merchant.add_product("milo", 20.0, "hot chocolate", 100)
-
-    def test_that_merchant_can_register(self):
-        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
-
-    def test_that_merchant_can_register(self):
-        self.assertEqual(1, self.merchant.register("oja", "sale121", "ojasales@email.com", "+23481123456"))
 
 
 if __name__ == '__main__':
