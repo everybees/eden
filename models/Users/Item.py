@@ -13,7 +13,7 @@ class Item:
     def set_product_price(self, product_price):
         self.name = product_price
 
-    def get_product_name(self):
+    def get_product_price(self):
         return self.price
 
     def set_product_description(self, product_description):
