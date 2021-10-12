@@ -7,3 +7,22 @@ class InvalidCustomer(Exception):
     def __init__(self, message):
         super(InvalidCustomer, self).__init__(message)
 
+
+class InvalidLoginDetails(Exception):
+    def __init__(self, message):
+        super(InvalidLoginDetails, self).__init__(message)
+
+
+class UserExists(Exception):
+    def __init__(self, message):
+        super(UserExists, self).__init__(message)
+
+
+class ProductExists(Exception):
+    def __init__(self, message):
+        super(ProductExists, self).__init__(message)
+
+
+class ProductExistException(Exception):
+    def __init__(self, message):
+        super(ProductExistException, self).__init__(message)
